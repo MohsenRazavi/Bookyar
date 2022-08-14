@@ -1,3 +1,19 @@
 from django.contrib import admin
+from .models import Book
 
-# Register your models here.
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'title',
+        'grade',
+        'lesson',
+        'date_created',
+        'is_active',
+        'need_or_add',
+    )
+
+    list_editable = (
+        'is_active',
+    )
