@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.http import HttpResponse
+
+
+def needed_books(request):
+    return HttpResponse('needed books')
+
+
+def added_books(request):
+    return HttpResponse('added books')
+
