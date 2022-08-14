@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "vazir";
+    src: url('../fonts/Vazir.ttf');
+}
+
+@font-face {
+    font-family: "vazir-bold";
+    font-weight: bold;
+    src: url("../fonts/Vazir-Bold.ttf");
+}
+
+/* SM breakpoint */
+@media (min-width: 576px) {
+    /* CUSTOM WIDTHS */
+    .w-sm-75 {
+        width: 75% !important;
+    }
+}
+
+* {
+    font-family: "vazir", sans-serif;
+    line-height: 1.8rem;
+
+}
+
+a {
+    text-decoration: none;
+}
+

@@ -18,7 +18,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <!---- endbootstrap-  -->
-    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +31,7 @@
     <!-- header -->
     <div class="p-4 p-md-5  rounded" style="background-color: rgb(231, 231, 231);">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 ">کتاب یار</h1>
+            <h1 class="display-4">کتاب یار</h1>
             <p class="lead my-3">کتاب های خود را که دیگر به آنها نیاز ندارید اضافه و کتاب های مورد نیاز خود را ثبت
                 کنید</p>
             <p class="lead mb-0 text-primary fw-bold">با ثبت نام در سامانه به ما بپیوندید</p>
@@ -43,7 +48,7 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
-                    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+                    <li><a href="{% url 'home' %}" class="nav-link px-2 text-dark border-bottom border-dark">خانه</a></li>
 {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
                     <li><a href="#about" class="nav-link px-2 text-secondary navhover">درباره ما</a></li>
                     <li><a href="#contact" class="nav-link px-2 text-secondary navhover">ارتباط با ما</a></li>
