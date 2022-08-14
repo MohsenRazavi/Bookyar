@@ -1,0 +1,41 @@
+{% extends '_base.html' %}
+
+{% block title %}کتاب های مورد نیاز{% endblock title %}
+
+{% block page-content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                      فیلتر
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">پایه</li>
+                      <li class="list-group-item">درس</li>
+                      <li class="list-group-item">...</li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-9">
+                <div class="card  shadow-sm">
+                    <h5 class="card-header">کتاب های پایه فلان</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">دروس بسان</h5>
+                        <p class="card-text">متن درخواست</p>
+                        <a href="#" class="btn btn-primary text-left">مشاهده جزئیات</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock page-content %}

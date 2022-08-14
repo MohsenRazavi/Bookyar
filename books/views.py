@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 
 def needed_books(request):
-    return HttpResponse('needed books')
+    return render(request, 'books/needed_books.html')
 
 
 def added_books(request):
-    return HttpResponse('added books')
+    return render(request, 'books/added_books.html')
 

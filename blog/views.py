@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+
+from .models import Post
 
 
-def blog_list(request):
-    return HttpResponse('blog list')
+class BlogList(generic.ListView):
+    model = Post
+    template_name = 'blog/blog_list.html'
+    context_object_name = 'posts'
+
