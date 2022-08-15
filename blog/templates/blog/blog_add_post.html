@@ -1,0 +1,50 @@
+{% extends '_base_blog.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block page-title %}
+اضافه کردن مقاله جدید
+{% endblock %}
+
+{% block nav-links %}
+        <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-dark border-bottom border-dark">بلاگ</a></li>
+    <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+{% endblock nav-links %}
+
+{% block page-content %}
+<div class="container mt-4" dir="rtl">
+    <div class="row">
+        <div class="col-9">
+            <div class="card shadow my-3">
+                <h5 class="card-header bg-success text-light px-5">اضافه کردن مقاله جدید</h5>
+                <div class="px-5 pt-3 pb-5">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-success mt-2">اضافه کردن</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+
+                <div class="card my-3 shadow">
+                    <h5 class="card-header bg-warning text-light">راهنما</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            عنوان و توضیحات کتاب مورد نظر خود را وارد کنید.
+                            توجه داشته باشید که نوشته خود را در دسته بندی مناسب قرار دهید تا یافتن آن برای کاربران هموار باشد.
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
