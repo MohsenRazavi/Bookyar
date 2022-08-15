@@ -28,16 +28,10 @@
 
 <body>
 
-    <!-- header -->
-    <div class="p-4 p-md-5  rounded" style="background-color: rgb(231, 231, 231);">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4">کتاب یار</h1>
-            <p class="lead my-3">کتاب های خود را که دیگر به آنها نیاز ندارید اضافه و کتاب های مورد نیاز خود را ثبت
-                کنید</p>
-            <p class="lead mb-0 text-primary fw-bold">با ثبت نام در سامانه به ما بپیوندید</p>
-        </div>
-    </div>
-    <header class="p-3 mb-3 border-bottom sticky-top" style="background-color: rgb(231, 231, 231);">
+
+{# header #}
+
+<header class="p-3 mb-3 border-bottom sticky-top" style="background-color: rgb(231, 231, 231);">
 
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -52,8 +46,7 @@
                     {% endblock nav-links %}
 
                 </ul>
-                <a href="{% url 'login' %}" class="btn btn-success mx-2">ورود</a>
-                <a href="{% url 'signup' %}" class="btn btn-warning mx-2">ثبت نام</a>
+
 
                 <!-- <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="نام کتاب یا اضافه کننده ..." aria-label="Search">
@@ -80,10 +73,9 @@
         </div>
     </header>
 
-    <div class="container">
-        <!-- *************** -->
+{# endheader #}
 
-        <!-- endheader -->
+
 {% block page-content %}
 
 {% endblock page-content %}

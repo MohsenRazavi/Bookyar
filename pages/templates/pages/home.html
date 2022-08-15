@@ -3,6 +3,17 @@
 
 {% block page-title %}BookYar.ir{% endblock page-title %}
 
+                    {% block nav-links %}
+                         <li><a href="{% url 'home' %}" class="nav-link px-2 text-dark border-bottom border-dark">خانه</a></li>
+{#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+                    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+                    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+                    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+                                            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+                    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های مورد نیاز</a></li>
+                    {% endblock nav-links %}
+
+
 {% block page-content %}
 
 
@@ -49,7 +60,7 @@
                     <div class="col-auto d-none d-lg-block">
                         <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'css/img/book_needed.jpeg' %}"
+                            src="{% static 'img/book_needed.jpeg' %}"
                             role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
                             focusable="true">
 
@@ -70,7 +81,7 @@
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'css/img/book_added.jpg' %}" role="img"
+                            src="{% static 'img/book_added.jpg' %}" role="img"
                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
 
                     </div>
@@ -93,7 +104,7 @@
                     <div class="col-auto d-none d-lg-block ">
                         <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'css/img/blog.jpg' %}" role="img"
+                            src="{% static 'img/blog.jpg' %}" role="img"
                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
 
                     </div>

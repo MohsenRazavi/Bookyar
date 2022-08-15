@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms',
+
     'pages',
     'accounts',
     'blog',
@@ -135,3 +137,13 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 # static files config
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static')), ]
+
+# crispy forms settings
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

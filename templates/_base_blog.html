@@ -47,11 +47,8 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
-                <li><a href="{% url 'home' %}" class="nav-link px-2 text-dark border-bottom border-dark">خانه</a></li>
-                {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
-                <li><a href="#about" class="nav-link px-2 text-secondary navhover">درباره ما</a></li>
-                <li><a href="#contact" class="nav-link px-2 text-secondary navhover">ارتباط با ما</a></li>
-                <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary navhover">بلاگ</a></li>
+{% block nav-links %}
+{% endblock nav-links %}
             </ul>
             <a href="{% url 'login' %}" class="btn btn-success mx-2">ورود</a>
             <a href="{% url 'signup' %}" class="btn btn-warning mx-2">ثبت نام</a>
@@ -64,7 +61,7 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <img src="{% static 'css/img/user.png' %}" alt="mdo" width="32" height="32"
+                    <img src="{% static 'img/user.png' %}" alt="mdo" width="32" height="32"
                          class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
