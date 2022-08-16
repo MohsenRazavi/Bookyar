@@ -3,15 +3,16 @@
 {% block title %}کتاب های مورد نیاز{% endblock title %}
 
 
-                    {% block nav-links %}
-                         <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
-{#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
-                    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
-                    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary">ارتباط با ما</a></li>
-                    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
-                    <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های اضافه شده</a></li>
-                    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
-                    {% endblock nav-links %}
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+    <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های اضافه
+        شده</a></li>
+    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+{% endblock nav-links %}
 
 {% block page-content %}
 
@@ -21,25 +22,27 @@
             <div class="col-3">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                      فیلتر
+                        فیلتر
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">پایه</li>
-                      <li class="list-group-item">درس</li>
-                      <li class="list-group-item">...</li>
+                        <li class="list-group-item">پایه</li>
+                        <li class="list-group-item">درس</li>
+                        <li class="list-group-item">...</li>
                     </ul>
-                  </div>
+                </div>
             </div>
             <div class="col-9">
-                <div class="card  shadow-sm">
-                    <h5 class="card-header">کتاب های پایه فلان</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">دروس بسان</h5>
-                        <p class="card-text">متن درخواست</p>
-                        <a href="#" class="btn btn-primary text-left">مشاهده جزئیات</a>
+                {% for book in books %}
+                    <div class="card shadow-sm">
+                        <h5 class="card-header">{{ book.user.username }} | {{ book.grade }}</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.lesson }}</h5>
+                            <h6 class="card-title text-muted">ایجاد شده در تاریخ : {{ book.date_created }}</h6>
+                            <p class="card-text">{{ book.description }}</p>
+                            <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-left">مشاهده جزئیات</a>
+                        </div>
                     </div>
-
-                </div>
+                {% endfor %}
 
 
             </div>

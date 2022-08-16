@@ -1,11 +1,19 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 
 class Book(models.Model):
-    NEED_OR_HAVE_CHOICES = (
+    NEED_OR_ADD_CHOICES = (
         ('need', 'needed'),
         ('add', 'added'),
+    )
+    MAJOR_CHOICES = (
+        ('riazi', 'riazi'),
+        ('tajrobi', 'tajrobi'),
+        ('ensani', 'ensani'),
+        ('general', 'general'),
+        ('other', 'other'),
     )
 
     GRADE_CHOICES = (
@@ -32,10 +40,13 @@ class Book(models.Model):
     )
 
     title = models.CharField(max_length=200, blank=False)
-    book_official_link = models.TextField(blank=False)
+    book_official_link = models.CharField(max_length=350, blank=False)
+    publisher = models.CharField(max_length=100, blank=False)
+    description = models.TextField(blank=True)
+    major = models.CharField(max_length=10, choices=MAJOR_CHOICES, blank=False)
     grade = models.CharField(max_length=3, choices=GRADE_CHOICES, blank=False)
     lesson = models.CharField(max_length=30, choices=LESSON_CHOICES, blank=False)
-    need_or_add = models.CharField(max_length=5, choices=NEED_OR_HAVE_CHOICES, blank=False)
+    need_or_add = models.CharField(max_length=5, choices=NEED_OR_ADD_CHOICES, blank=False)
     year = models.IntegerField()
     date_created = models.DateField(auto_now_add=True)
     time_created = models.TimeField(auto_now_add=True)
@@ -46,3 +57,5 @@ class Book(models.Model):
     def __str__(self):
         return f"{self.title} , {self.grade}"
 
+    def get_absolute_url(self):
+        return reverse('book_detail', args=[self.id])

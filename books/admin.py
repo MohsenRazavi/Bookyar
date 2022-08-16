@@ -7,6 +7,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = (
         'user',
         'title',
+        'major',
         'grade',
         'lesson',
         'date_created',

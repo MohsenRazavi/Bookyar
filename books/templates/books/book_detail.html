@@ -1,0 +1,69 @@
+{% extends '_base.html' %}
+
+{% block page-title %}درخواست برای کتاب {{ book.title }}{% endblock page-title %}
+
+{% block nav-links %}
+
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-dark border-bottom border-dark">بلاگ</a></li>
+    <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+
+{% endblock nav-links %}
+
+
+
+{% block page-content %}
+
+    <div class="container mt-5" dir="rtl">
+        <div class="">
+            <div class="">
+                <div class="d-flex justify-content-center">
+                    <div class="row w-sm-75 w-100">
+                        <div class="col-xs-12 col-md-3 d-flex justify-content-center">
+                            <div>
+                                {% if book.book_cover %}
+                                    <img src="{{ book.book_cover.url }}"
+                                         class="img-fluid rounded-start" alt="کتاب  {{ book.title }}">
+                                {% else %}
+                                    <img src="/media/book_covers/dsBuffer.jpg"
+                                         class="img-fluid rounded-start" alt="کتاب {{ book.title }}"></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 text-center text-md-end mt-md-1 mt-4">
+                            <h1>{{ book.title }}</h1>
+                            <h5 class="small my-1"><span class="text-muted">کاربر: </span>{{ book.user.username }}</h5>
+                            <h5 class="small my-1"><span
+                                    class="text-muted">تاریخ ایجاد : </span>{{ book.date_created }}</h5>
+                            <h5 class="small my-1"><span class="text-muted">انتشارات: </span>{{ book.publisher }}</h5>
+                            <h5 class="small my-1"><span class="text-muted">لینک کتاب در صفحه رسمی: </span><a
+                                    href="{{ book.book_official_link }}">کلیک کنید</a></h5>
+                        </div>
+                        <div class="col-xs-12 col-md-3 d-flex flex-column">
+
+{#                            {% if user == author or user.is_superuser %}#}
+{##}
+{#                                <a class="btn btn-warning" href="{% url 'book_update' post.id %}">به روز رسانی</a>#}
+{#                                <br>#}
+{#                                <a class="btn btn-danger" href="{% url 'book_delete' post.id %}">حذف نوشته</a>#}
+{##}
+{#                            {% endif %}#}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <div class="my-3 p-5 w-sm-75 w-100">
+                        {{ book.description|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock page-content %}
