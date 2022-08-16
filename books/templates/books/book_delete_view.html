@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+
+{% block page-title %}
+    حذف درخواست
+{% endblock page-title %}
+
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary">بلاگ</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-dark border-bottom border-dark" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+            {% if book.need_or_add == 'add' %}
+
+                <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های
+                    اضافه
+                    شده</a></li>
+            {% else %}
+                <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary">کتاب های اضافه شده</a></li>
+            {% endif %}
+            {% if book.need_or_add == 'need' %}
+                <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب
+                    های
+                    درخواستی</a></li>
+            {% else %}
+                <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+            {% endif %}
+        </ul>
+    </li>
+{% endblock nav-links %}
+
+{% block page-content %}
+
+    <div class="container">
+        <div class="card">
+            <div class="card-title">
+                آیا مطمئنید ؟
+            </div>
+            <div class="card-subtitle">
+                آیا از حذف این درخواست با عنوان {{ book.title }} مطمئنید ؟
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger">بله حذف شود</button>
+                <a href="{% url 'home' %}" class="btn btn-primary">بازگشت به خانه</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock page-content %}

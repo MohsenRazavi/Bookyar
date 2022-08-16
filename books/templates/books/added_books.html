@@ -9,9 +9,17 @@
     <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
     <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary">ارتباط با ما</a></li>
     <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
-    <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های اضافه
-        شده</a></li>
-    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-dark border-bottom border-dark" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+
+            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های اضافه شده</a></li>
+            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+        </ul>
+    </li>
 {% endblock nav-links %}
 
 {% block page-content %}
@@ -38,7 +46,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ book.lesson }}</h5>
                             <h6 class="card-title text-muted">ایجاد شده در تاریخ : {{ book.date_created }}</h6>
-                            <p class="card-text">{{ book.description }}</p>
+                            <p class="card-text">{{ book.description|truncatewords:25 }}</p>
                             <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-left">مشاهده جزئیات</a>
                         </div>
                     </div>

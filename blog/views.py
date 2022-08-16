@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 
 from .models import Post, Comment
@@ -40,6 +40,7 @@ def blog_post_detail_view(request, pk):
     })
 
 
+@login_required
 def blog_post_create(request):
     if request.method == 'POST':
         create_form = PostCreateForm(request.POST, request.FILES)

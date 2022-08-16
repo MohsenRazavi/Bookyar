@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block page-title %}
-    به روز رسانی {{ post.title }}
+    ایجاد درخواست جدید
 {% endblock %}
 
 {% block nav-links %}
@@ -11,17 +11,31 @@
     {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
     <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
     <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
-    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-dark border-bottom border-dark">بلاگ</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary">بلاگ</a></li>
     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown"
+        <a class="nav-link dropdown-toggle text-dark border-bottom border-dark" href="#" role="button" data-bs-toggle="dropdown"
            aria-expanded="false">
             کتاب ها
         </a>
         <ul class="dropdown-menu">
-            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
-            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+            {% if book.need_or_add == 'add' %}
+
+                <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب های
+                    اضافه
+                    شده</a></li>
+            {% else %}
+                <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary">کتاب های اضافه شده</a></li>
+            {% endif %}
+            {% if book.need_or_add == 'need' %}
+                <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-dark border-bottom border-dark">کتاب
+                    های
+                    درخواستی</a></li>
+            {% else %}
+                <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+            {% endif %}
         </ul>
     </li>
+
 {% endblock nav-links %}
 
 {% block page-content %}
@@ -29,12 +43,12 @@
         <div class="row">
             <div class="col-9">
                 <div class="card shadow my-3">
-                    <h5 class="card-header bg-success text-light px-5">به روزرسانی {{ post.title }}</h5>
+                    <h5 class="card-header bg-primary text-light px-5">ایجاد درخواست جدید</h5>
                     <div class="px-5 pt-3 pb-5">
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <button type="submit" class="btn btn-success mt-2">به روز رسانی</button>
+                            <button type="submit" class="btn btn-success mt-2">ایجاد</button>
                         </form>
                     </div>
                 </div>
@@ -56,4 +70,4 @@
         </div>
     </div>
 
-{% endblock page-content %}
+{% endblock %}

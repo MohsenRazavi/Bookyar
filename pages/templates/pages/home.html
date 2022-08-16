@@ -3,15 +3,23 @@
 
 {% block page-title %}BookYar.ir{% endblock page-title %}
 
-                    {% block nav-links %}
-                         <li><a href="{% url 'home' %}" class="nav-link px-2 text-dark border-bottom border-dark">خانه</a></li>
-{#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
-                    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
-                    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
-                    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
-                                            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
-                    <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
-                    {% endblock nav-links %}
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-dark border-bottom border-dark">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+        </ul>
+    </li>
+
+{% endblock nav-links %}
 
 
 {% block page-content %}
@@ -19,136 +27,140 @@
 
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{% static 'img/carusel1.jpg' %}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'img/carusel2.jpg' %}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'img/carusel3.jpg' %}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'img/carusel4.jpg' %}" class="d-block w-100" alt="...">
-                </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/carusel1.jpg' %}" class="d-block w-100" alt="...">
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            <div class="carousel-item">
+                <img src="{% static 'img/carusel2.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/carusel3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/carusel4.jpg' %}" class="d-block w-100" alt="...">
+            </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-        <div class="row my-4">
-            <div class="col-md-6 ">
-                <a  href="{% url 'needed_books' %}">
+    <div class="row my-4">
+        <div class="col-md-6 ">
+            <a href="{% url 'needed_books' %}">
                 <div
-                    class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative ">
+                        class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative ">
                     <div class="col p-4 d-flex flex-column position-static bg-light">
                         <h3 class="mb-0 text-dark">کتاب های درخواستی</h3>
                         <div class="mb-1 text-muted">Nov 12</div>
                         <p class="card-text mb-auto text-dark">کتاب هایی که که درخواست داده شده در این قسمت قرار
                             دارند</p>
-                        <a class="btn btn-primary" href="{% url 'needed_books' %}" class="stretched-link">برای مشاهده کلیک کنید</a>
+                        <a class="btn btn-primary" href="{% url 'needed_books' %}" class="stretched-link">برای مشاهده
+                            کلیک کنید</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'img/book_needed.jpeg' %}"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="true">
+                             src="{% static 'img/book_needed.jpeg' %}"
+                             role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                             focusable="true">
 
                     </div>
                 </div>
-                    </a>
-            </div>
-            <div class="col-md-6">
-                <a href="{% url 'added_books' %}">
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'added_books' %}">
                 <div
-                    class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+                        class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static bg-light">
                         <h3 class="mb-0 text-dark">کتاب های اضافه شده</h3>
                         <div class="mb-1 text-muted">Nov 11</div>
                         <p class="mb-auto text-dark">کتاب هایی که که برای فروش یا اهدا اضافه شده اند در این قسمت
                             قرار دارند</p>
-                        <a class="btn btn-primary" href="{% url 'added_books' %}" class="stretched-link">برای مشاهده کلیک کنید</a>
+                        <a class="btn btn-primary" href="{% url 'added_books' %}" class="stretched-link">برای مشاهده
+                            کلیک کنید</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'img/book_added.jpg' %}" role="img"
-                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
+                             src="{% static 'img/book_added.jpg' %}" role="img"
+                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
 
                     </div>
                 </div>
-                    </a>
-            </div>
+            </a>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <a href="{% url 'blog_list' %}">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{% url 'blog_list' %}">
                 <div
-                    class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative card">
+                        class="row g-0 border border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative card">
                     <div class="col p-4 d-flex flex-column position-static bg-light ">
                         <h3 class="mb-0 text-dark ">بلاگ</h3>
                         <div class="mb-1 text-muted">Nov 12</div>
                         <p class="card-text mb-auto text-dark">نقد و بررسی کتاب ها که توسط کاربران نوشته شده اند در این
                             قسمت قرار دارند</p>
-                        <a class="btn btn-primary mt-4" href="{% url 'blog_list' %}" class="stretched-link">برای مشاهده کلیک کنید</a>
+                        <a class="btn btn-primary mt-4" href="{% url 'blog_list' %}" class="stretched-link">برای مشاهده
+                            کلیک کنید</a>
                     </div>
                     <div class="col-auto d-none d-lg-block ">
                         <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                         <img class="bd-placeholder-img" width="200" height="250"
-                            src="{% static 'img/blog.jpg' %}" role="img"
-                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
+                             src="{% static 'img/blog.jpg' %}" role="img"
+                             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="true">
 
                     </div>
                 </div>
-                    </a>
+            </a>
+        </div>
+    </div>
+
+    <div class="card bg-light my-3 shadow-sm" id="about">
+        <div class="card-header text-dark text-center">
+            درباره ما
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-dark text-right">کتاب یار</h5>
+            <p class="card-text text-dark text-right">یک سامانه آنلاین و سریع است که به وسیله آن میتوانید کتاب های
+                خود را که قبلا مطالعه
+                کرده اید و از این پس به آن نیاز ندارید در سامانه ثبت کنید یا اگر به دنبال کتاب خاصی میگردید میتوانید
+                آن کتاب را در سامانه جستجو کنید . کتاب های ثبت شده میتوانند رایگان یا غیر رایگان باشند . همچنین در
+                بلاگ کتاب یار نقد و بررسی کتاب های مطالعه شده توسط خود کاربران موجود است و میتوانید از نظرات آنها
+                نیز با خبر شوید . اما همانطور که میدانید هزینه های لازم برای برپایی این سامانه نیز کم نیست . اگر از
+                کاربران سامانه هستید و از سامانه راضی هستید لطفا برای حمایت از کتاب یار بر روی حمایت کلیک کنید .</p>
+            <div class="text-center d-grid gap-2">
+
+                <a href="#" class="btn btn-primary">حمایت از کتاب یار</a>
             </div>
         </div>
+    </div>
 
-        <div class="card bg-light my-3 shadow-sm" id="about">
-            <div class="card-header text-dark text-center">
-                درباره ما
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-dark text-right">کتاب یار</h5>
-                <p class="card-text text-dark text-right">یک سامانه آنلاین و سریع است که به وسیله آن میتوانید کتاب های
-                    خود را که قبلا مطالعه
-                    کرده اید و از این پس به آن نیاز ندارید در سامانه ثبت کنید یا اگر به دنبال کتاب خاصی میگردید میتوانید
-                    آن کتاب را در سامانه جستجو کنید . کتاب های ثبت شده میتوانند رایگان یا غیر رایگان باشند . همچنین در
-                    بلاگ کتاب یار نقد و بررسی کتاب های مطالعه شده توسط خود کاربران موجود است و میتوانید از نظرات آنها
-                    نیز با خبر شوید . اما همانطور که میدانید هزینه های لازم برای برپایی این سامانه نیز کم نیست . اگر از
-                    کاربران سامانه هستید و از سامانه راضی هستید لطفا برای حمایت از کتاب یار بر روی حمایت کلیک کنید .</p>
-                <div class="text-center d-grid gap-2">
-
-                    <a href="#" class="btn btn-primary">حمایت از کتاب یار</a>
-                </div>
-            </div>
+    <div class="card bg-light my-3 shadow-sm" id="contact">
+        <div class="card-header text-dark text-center">
+            ارتباط با کتاب یار
         </div>
-
-        <div class="card bg-light my-3 shadow-sm" id="contact">
-            <div class="card-header text-dark text-center">
-                ارتباط با کتاب یار
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-dark text-right">راه های ارتباطی :</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-light text-dark border-dark">ایمیل : ketabyar@gmail.com</li>
-                    <li class="list-group-item bg-light text-dark border-dark">آدرس : کهکشان راه شیری ، منظومه شمسی،
-                        سیاره زمین ، قاره آسیا ، کشور ایران</li>
-                    <li class="list-group-item bg-light text-dark border-dark">اینستاگرام</li>
-                    <li class="list-group-item bg-light text-dark border-dark">توییتر</li>
-                    <li class="list-group-item bg-light text-dark border-dark">فیس بوک</li>
-                </ul>
-            </div>
+        <div class="card-body">
+            <h5 class="card-title text-dark text-right">راه های ارتباطی :</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-light text-dark border-dark">ایمیل : ketabyar@gmail.com</li>
+                <li class="list-group-item bg-light text-dark border-dark">آدرس : کهکشان راه شیری ، منظومه شمسی،
+                    سیاره زمین ، قاره آسیا ، کشور ایران
+                </li>
+                <li class="list-group-item bg-light text-dark border-dark">اینستاگرام</li>
+                <li class="list-group-item bg-light text-dark border-dark">توییتر</li>
+                <li class="list-group-item bg-light text-dark border-dark">فیس بوک</li>
+            </ul>
         </div>
+    </div>
 
 
 
