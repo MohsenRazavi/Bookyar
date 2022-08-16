@@ -52,12 +52,12 @@
                 {% endblock nav-links %}
 
             </ul>
-        {% if user.is_authenticated %}
-            <h5 class="navbar-brand">{{ user.username }}</h5>
+            {% if user.is_authenticated %}
+                <h5 class="navbar-brand">{{ user.username }}</h5>
             {% else %}
-                        <a href="{% url 'login' %}" class="btn btn-success mx-2">ورود</a>
-            <a href="{% url 'signup' %}" class="btn btn-warning mx-2">ثبت نام</a>
-        {% endif %}
+                <a href="{% url 'login' %}" class="btn btn-success mx-2">ورود</a>
+                <a href="{% url 'signup' %}" class="btn btn-warning mx-2">ثبت نام</a>
+            {% endif %}
 
 
             <!-- <form class="d-flex">
@@ -69,8 +69,8 @@
                 <a href="#" class="d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                    aria-expanded="false">
                     {% if user.is_authenticated and user.profile %}
-                            <img src="{{ user.profile.url }}" alt="mdo" width="40" height="40"
-                                 class="rounded-circle">
+                        <img src="{{ user.profile.url }}" alt="mdo" width="40" height="40"
+                             class="rounded-circle">
 
                     {% else %}
                         <img src="{% static 'img/user.png' %}" alt="mdo" width="40" height="40"
@@ -78,15 +78,20 @@
                     {% endif %}
 
                 </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">پنل کاربری</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a></li>
-                    <li><a class="dropdown-item" href="#">درخواست کتاب</a></li>
-                    <li><a class="dropdown-item" href="#">اضافه کردن کتاب</a></li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">پنل کاربری</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#">درخواست کتاب</a></li>
+                        <li><a class="dropdown-item" href="#">اضافه کردن کتاب</a></li>
+                        <li><a href="{% url 'logout' %}" class="dropdown-item">خروج</a></li>
+                    </ul>
+                {% endif %}
+
             </div>
         </div>
     </div>

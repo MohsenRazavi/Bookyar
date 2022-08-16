@@ -1,6 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
+
+from .forms import CustomUserCreateForm
 
 
-def signup(request):
-    return HttpResponse('signup')
+class SignUpView(generic.CreateView):
+    model = get_user_model()
+    form_class = CustomUserCreateForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('login')

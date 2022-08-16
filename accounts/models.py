@@ -10,3 +10,4 @@ class CustomUser(AbstractUser):
     age = models.IntegerField(blank=True, null=True)
     profile = models.ImageField(upload_to='profiles/', blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
+    biography = models.TextField(blank=True)

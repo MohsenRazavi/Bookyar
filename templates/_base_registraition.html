@@ -46,9 +46,9 @@
                 {% endblock nav-links %}
 
             </ul>
-        {% if user.is_authenticated %}
-            <h5 class="navbar-brand">{{ user.username }}</h5>
-        {% endif %}
+            {% if user.is_authenticated %}
+                <h5 class="navbar-brand">{{ user.username }}</h5>
+            {% endif %}
 
 
             <!-- <form class="d-flex">
@@ -68,6 +68,8 @@
                              class="rounded-circle">
                     {% endif %}
                 </a>
+            {% if user.is_authenticated %}
+            
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#">پنل کاربری</a></li>
                     <li>
@@ -76,7 +78,9 @@
                     <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a></li>
                     <li><a class="dropdown-item" href="#">درخواست کتاب</a></li>
                     <li><a class="dropdown-item" href="#">اضافه کردن کتاب</a></li>
+                    <li><a href="{% url 'logout' %}" class="dropdown-item">خروج</a></li>
                 </ul>
+            {% endif %}
             </div>
         </div>
     </div>

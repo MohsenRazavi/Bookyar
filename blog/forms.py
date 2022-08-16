@@ -24,3 +24,18 @@ class PostCreateForm(forms.ModelForm):
             'link',
             'description',
         ]
+
+
+class PostUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = (
+            'title',
+            'publisher',
+            'lesson',
+            'grade',
+            'post_cover',
+            'description',
+        )
+
+

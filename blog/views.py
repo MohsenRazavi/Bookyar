@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse, reverse_lazy
 
 from .models import Post, Comment
-from .forms import CommentForm, PostCreateForm
+from .forms import CommentForm, PostCreateForm, PostUpdateForm
 
 
 class BlogPostList(generic.ListView):
@@ -18,6 +19,7 @@ class BlogPostList(generic.ListView):
 def blog_post_detail_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comment.all().filter(is_active=True).order_by('-datetime_created')
+    author = post.author
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -33,6 +35,8 @@ def blog_post_detail_view(request, pk):
         'post': post,
         'comments': comments,
         'comment_form': comment_form,
+        'author': author,
+
     })
 
 
@@ -48,8 +52,8 @@ def blog_post_create(request):
         create_form = PostCreateForm()
 
     return render(request, 'blog/blog_add_post.html', {
-            'form': create_form,
-        })
+        'form': create_form,
+    })
 
 
 # class BlogPostCreate(LoginRequiredMixin, generic.CreateView):
@@ -69,15 +73,8 @@ def blog_post_create(request):
 
 class BlogPostUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Post
-    fields = (
-        'title',
-        'publisher',
-        'lesson',
-        'grade',
-        'post_cover',
-        'description',
-
-    )
+    form_class = PostUpdateForm
+    # Post.objects.get().is_active = False
     template_name = 'blog/blog_update_post.html'
 
     def test_func(self):
@@ -85,7 +82,7 @@ class BlogPostUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
         if self.request.user.is_superuser:
             return True
         else:
-            return obj.user == self.request.user
+            return obj.author == self.request.user
 
 
 class BlogPostDelete(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
@@ -98,7 +95,7 @@ class BlogPostDelete(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
         if self.request.user.is_superuser:
             return True
         else:
-            return obj.user == self.request.user
+            return obj.author == self.request.user
 
 
 class BlogCommentDelete(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):

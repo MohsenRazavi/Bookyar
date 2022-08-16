@@ -11,7 +11,7 @@
     <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary navhover">کتاب های مورد نیاز</a></li>
 {% endblock nav-links %}
 
-{% block page-title %}ورود به کتاب یار{% endblock page-title %}
+{% block page-title %}ثبت نام در کتاب یار{% endblock page-title %}
 
 {% block page-content %}
 
@@ -24,20 +24,14 @@
                         <div class="card shadow-2-strong shadow" style="border-radius: 1rem;">
                             <div class="card-body p-5 text-center">
 
-                                <h3 class="mb-5">ورود</h3>
+                                <h3 class="mb-5">ثبت نام</h3>
 
-                                <form method="post">
+                                <form method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form|crispy }}
-                                    <button class="btn btn-success btn-lg btn-block mt-3" type="submit">ورود</button>
+                                    <button class="btn btn-success btn-lg btn-block mt-3" type="submit">تکمیل ثبت نام</button>
 
                                 </form>
-                                <hr class="my-4">
-
-                                <a href="{% url 'password_reset' %}" class="btn btn-lg btn-block btn-danger"
-                                >فراموشی کلمه عبور</a>
-                                <a class="btn btn-lg btn-block btn-primary my-2"
-                                >ثبت نام</a>
 
                             </div>
                         </div>

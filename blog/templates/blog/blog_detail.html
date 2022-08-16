@@ -44,13 +44,13 @@
                             <h3 class="align-self-center pt-2 text-muted align-self-md-end">
                                 <h3><span class="text-muted">امتیاز</span></h3>
                             </h3>
-                            {#                            {% if post.user == user %}#}
+                                                        {% if user == author or user.is_superuser %}
 
                             <a class="btn btn-warning" href="{% url 'blog_update' post.id %}">به روز رسانی</a>
                             <br>
                             <a class="btn btn-danger" href="{% url 'blog_delete' post.id %}">حذف نوشته</a>
 
-                            {#                            {% endif %}#}
+                                                        {% endif %}
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <div class="border-bottom mb-3">
 
                                 {% if comment.user.profile %}
-                                    <img src="{{ user.profile.url }}" alt="mdo" width="60" height="60"
+                                    <img src="{{ comment.user.profile.url }}" alt="mdo" width="60" height="60"
                                          class="rounded-circle ">
                                 {% else %}
                                     <img src="{% static 'img/user.png' %}" alt="mdo" width="60" height="60"
