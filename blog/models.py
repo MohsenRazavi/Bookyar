@@ -37,6 +37,7 @@ class Post(models.Model):
     datetime_lastedit = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=False)
     post_cover = models.ImageField(upload_to='post_covers/', blank=True)
+    link = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return f"{self.title} | {self.publisher} | {self.author}"

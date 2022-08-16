@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
 
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostCreateForm
 
 
 class BlogPostList(generic.ListView):
@@ -36,19 +36,35 @@ def blog_post_detail_view(request, pk):
     })
 
 
-class BlogPostCreate(LoginRequiredMixin, generic.CreateView):
-    model = Post
-    fields = (
-        'title',
-        'publisher',
-        'lesson',
-        'grade',
-        'post_cover',
-        'description',
-        'author'
-    )
+def blog_post_create(request):
+    if request.method == 'POST':
+        create_form = PostCreateForm(request.POST, request.FILES)
+        if create_form.is_valid():
+            new_post = create_form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+            create_form = PostCreateForm()
+    else:
+        create_form = PostCreateForm()
 
-    template_name = 'blog/blog_add_post.html'
+    return render(request, 'blog/blog_add_post.html', {
+            'form': create_form,
+        })
+
+
+# class BlogPostCreate(LoginRequiredMixin, generic.CreateView):
+#     model = Post
+#     fields = (
+#         'title',
+#         'publisher',
+#         'lesson',
+#         'grade',
+#         'post_cover',
+#         'description',
+#         'author'
+#     )
+#
+#     template_name = 'blog/blog_add_post.html'
 
 
 class BlogPostUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
