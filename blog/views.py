@@ -16,6 +16,7 @@ class BlogPostList(generic.ListView):
         return Post.objects.all().filter(is_active=True).order_by('-datetime_lastedit')
 
 
+# @user_passes_test(lambda u, pk: u.is_superuser or u == get_object_or_404(Post, pk=pk).author)
 def blog_post_detail_view(request, pk):
     # def test_func(request, post):
     #     if request.user.is_superuser:
@@ -81,8 +82,8 @@ def blog_post_create(request):
 class BlogPostUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Post
     form_class = PostUpdateForm
-    # Post.objects.get().is_active = False
     template_name = 'blog/blog_update_post.html'
+    # self.get_object().is_active = False
 
     def test_func(self):
         obj = self.get_object()

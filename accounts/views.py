@@ -32,7 +32,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
 @login_required
 def user_needed_books_view(request, pk):
     user = request.user
-    user_needed_books = user.books.all().filter(need_or_add='need')
+    user_needed_books = user.books.all().filter(need_or_add='need').order_by('-time_created')
     return render(request, 'accounts/user_panel_neededbooks.html', {
         'user': user,
         'books': user_needed_books,
@@ -42,7 +42,7 @@ def user_needed_books_view(request, pk):
 @login_required
 def user_added_books_view(request, pk):
     user = request.user
-    user_added_books = user.books.all().filter(need_or_add='add')
+    user_added_books = user.books.all().filter(need_or_add='add').order_by('-time_created')
     return render(request, 'accounts/user_panel_addedbooks.html', {
         'user': user,
         'books': user_added_books,
@@ -52,8 +52,17 @@ def user_added_books_view(request, pk):
 @login_required
 def user_posts_view(request, pk):
     user = request.user
-    user_posts = user.posts.all()
+    user_posts = user.posts.all().order_by('-datetime_lastedit')
     return render(request, 'accounts/user_panel_posts.html', {
         'user': user,
         'posts': user_posts,
+    })
+
+
+@login_required
+def user_out_view(request, pk):
+    custom_user = get_user_model().objects.get(pk=pk)
+    print(custom_user)
+    return render(request, 'accounts/user_out_view.html', {
+        'custom_user': custom_user,
     })

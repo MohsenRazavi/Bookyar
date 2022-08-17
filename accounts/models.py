@@ -12,6 +12,8 @@ class CustomUser(AbstractUser):
     profile = models.ImageField(upload_to='profiles/', blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
     biography = models.TextField(blank=True)
+    phone = models.CharField(max_length=12, blank=True)
+    address = models.TextField(blank=True)
 
     def get_absolute_url(self):
         return reverse('panel', args=[self.id])

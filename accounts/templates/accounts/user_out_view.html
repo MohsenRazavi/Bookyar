@@ -1,0 +1,63 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block page-title %}مشخصات کاربر{% endblock page-title %}
+
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="{% url 'home' %}#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="{% url 'home' %}#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+        </ul>
+    </li>
+{% endblock nav-links %}
+
+{% block page-content %}
+
+    <div class="container">
+        {% if custom_user.profile %}
+            <p class="text-center">
+            <img src="{{ custom_user.profile.url }}" alt="mdo" width="250" height="250"
+                 class="rounded-circle shadow">
+            </p>
+        {% else %}
+            <p class="text-center">
+            <img src="{% static 'img/user.png' %}" alt="mdo" width="250" height="250"
+                 class="rounded-circle">
+            </p>
+        {% endif %}
+        <div class="card">
+            <div class="card-header">
+                {% if custom_user.first_name and custom_user.last_name %}
+                {{ custom_user.first_name }} {{ custom_user.last_name }}
+                    {% else %}
+                    {{ custom_user.username }}
+                {% endif %}
+            </div>
+            <ul class="list-group list-group-flush">
+            {% if custom_user.biography %}
+                    <li class="list-group-item">{{ custom_user.biography|linebreaks }}</li>
+            {% endif %}
+                {% if custom_user.email %}
+                    <li class="list-group-item">ایمیل : {{ custom_user.email }}</li>
+                {% endif %}
+                {% if custom_user.address %}
+                    <li class="list-group-item">آدرس : {{ custom_user.address }}</li>
+                {% endif %}
+                {% if custom_user.phone %}
+                    <li class="list-group-item">تلفن : {{ custom_user.phone }}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock page-content %}

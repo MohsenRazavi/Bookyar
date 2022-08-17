@@ -28,6 +28,11 @@
         <div class="card shadow-sm">
             <h5 class="card-header">{{ book.user.username }} | {{ book.grade }}</h5>
             <div class="card-body">
+            {% if book.is_active == True %}
+                <span class="badge bg-success">تایید شده</span>
+            {% else %}
+                <span class="badge bg-primary">در حال بررسی</span>
+            {% endif %}
                 <h5 class="card-title">{{ book.lesson }}</h5>
                 <h6 class="card-title text-muted">ایجاد شده در تاریخ : {{ book.date_created }}</h6>
                 <p class="card-text">{{ book.description|truncatewords:25 }}</p>
@@ -55,7 +60,7 @@
         </a>
     </li>
     <li>
-        <a href="{% url 'panel_posts' user.id%}" class="nav-link link-dark">
+        <a href="{% url 'panel_posts' user.id %}" class="nav-link link-dark">
             مقالات نوشته شده
         </a>
     </li>

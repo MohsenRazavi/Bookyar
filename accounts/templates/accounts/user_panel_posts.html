@@ -25,7 +25,6 @@
 
 {% block panel-content %}
     {% for post in posts %}
-        {% if post.is_active == True %}
 
             <div class="card m-2" style="max-width: 45%">
             <div class="row g-0 h-100" dir="rtl">
@@ -39,13 +38,16 @@
                     <img src="/media/book_covers/dsBuffer.jpg"
                          class="img-fluid rounded-start" alt="کتاب {{ post.title }}"></a>
 
-
-            {% endif %}
         {% endif %}
     </div>
     <div class="col-md-8 h-100">
         <div class="d-flex flex-column justify-content-between h-100">
             <div class="card-body">
+                {% if post.is_active == True %}
+                    <span class="badge bg-success">تایید شده</span>
+                {% else %}
+                    <span class="badge bg-primary">در حال بررسی</span>
+                {% endif %}
                 <a style="text-decoration: none; color : black;" href="{{ post.get_absolute_url }}">
                     <h3 class="card-title"><strong>{{ post.title }}</strong></h3>
                 </a>
@@ -78,7 +80,7 @@
         </a>
     </li>
     <li>
-        <a href="{% url 'panel_posts' user.id%}" class="nav-link active">
+        <a href="{% url 'panel_posts' user.id %}" class="nav-link active">
             مقالات نوشته شده
         </a>
     </li>
