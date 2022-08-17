@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse, reverse_lazy
 
 from .models import Post, Comment
@@ -17,6 +17,12 @@ class BlogPostList(generic.ListView):
 
 
 def blog_post_detail_view(request, pk):
+    # def test_func(request, post):
+    #     if request.user.is_superuser:
+    #         return True
+    #     else:
+    #         return request.user == post.author
+
     post = get_object_or_404(Post, pk=pk)
     comments = post.comment.all().filter(is_active=True).order_by('-datetime_created')
     author = post.author
