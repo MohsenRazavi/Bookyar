@@ -1,0 +1,65 @@
+{% extends '_base_panel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page-title %}پنل کاربری {{ user.username }}{% endblock page-title %}
+
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+        </ul>
+    </li>
+{% endblock nav-links %}
+
+
+{% block panel-content %}
+    <div class="card">
+        <div class="card-header">
+            مشخصات کاربر
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <a href="{% url 'password_change' %}" class="btn btn-danger mt-3">تغییر کلمه عبور</a>
+                <br>
+                <button type="submit" class="btn btn-primary mt-3">اعمال تغییرات</button>
+            </form>
+        </div>
+    </div>
+{% endblock panel-content %}
+
+{% block panel-nav %}
+
+    <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+            مشخصات
+        </a>
+    </li>
+    <li>
+        <a href="#" class="nav-link link-dark">
+            کتاب های اضافه شده
+        </a>
+    </li>
+    <li>
+        <a href="#" class="nav-link link-dark">
+            کتاب های درخواستی
+        </a>
+    </li>
+    <li>
+        <a href="#" class="nav-link link-dark">
+            مقالات نوشته شده
+        </a>
+    </li>
+{% endblock panel-nav %}

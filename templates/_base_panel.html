@@ -1,0 +1,80 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block page-title %}پنل کاربری {{ user.username }}{% endblock page-title %}
+
+{% block nav-links %}
+    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
+    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
+    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
+    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
+    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            کتاب ها
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
+            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
+        </ul>
+    </li>
+{% endblock nav-links %}
+
+
+{% block page-content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                {% block panel-content %}
+                {% endblock panel-content %}
+            </div>
+            <div class="col-4">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                    <a href="/"
+                       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <span class="fs-4">پنل کاربری</span>
+{#                        <br>#}
+{#                        {% if user.first_name and user.last_name %}#}
+{#                        <p class="text-muted">{{ user.first_name }} {{ user.last.name }}</p>#}
+{#                        {% endif %}#}
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        {% block panel-nav %}
+                        {% endblock panel-nav %}
+                    </ul>
+                    <hr>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">خروج</a>
+                    {#                    <div class="dropdown">#}
+                    {#                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"#}
+                    {#                           data-bs-toggle="dropdown" aria-expanded="false">#}
+                    {#                            {% if user.profile %}#}
+                    {#                                <img src="{{ user.profile.url }}"  width="32" height="32"#}
+                    {#                                     class="rounded-circle me-2">#}
+                    {#                            {% else %}#}
+                    {#                                <img src="{% static 'img/user.png' %}"  width="32" height="32"#}
+                    {#                                     class="rounded-circle me-2">#}
+                    {#                            {% endif %}#}
+                    {##}
+                    {#                            <strong>{{ user.username }}</strong>#}
+                    {#                        </a>#}
+                    {#                        <ul class="dropdown-menu text-small">#}
+                    {##}
+                    {#                            <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a>#}
+                    {#                            </li>#}
+                    {#                            <li><a class="dropdown-item" href="{% url 'book_create' %}">ایجاد کتاب جدید</a></li>#}
+                    {#                            <li>#}
+                    {#                                <hr class="dropdown-divider">#}
+                    {#                            </li>#}
+                    {#                            <li><a href="{% url 'logout' %}" class="dropdown-item">خروج</a></li>#}
+                    {#                        </ul>#}
+                    {#                    </div>#}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock page-content %}
