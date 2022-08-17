@@ -29,6 +29,8 @@
 <body>
 
 <!-- header -->
+{% block header %}
+{% endblock header %}
 <div class="p-4 p-md-5  rounded" style="background-color: rgb(231, 231, 231);">
     <div class="col-md-6 px-0">
         <h1 class="display-4 ">کتاب یار- بلاگ</h1>
@@ -76,7 +78,7 @@
                 {% if user.is_authenticated %}
 
                     <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">پنل کاربری</a></li>
+                        <li><a class="dropdown-item" href="{% url 'panel' user.id %}">پنل کاربری</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

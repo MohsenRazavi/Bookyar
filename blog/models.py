@@ -27,7 +27,7 @@ class Post(models.Model):
         ('other', 'other'),
     )
 
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author = models.ForeignKey(get_user_model(), related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False)
     publisher = models.CharField(max_length=200, blank=False)
     description = models.TextField()

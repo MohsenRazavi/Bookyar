@@ -1,27 +1,98 @@
 {% extends '_base.html' %}
 {% load static %}
 
-{% block page-title %}پنل کاربری {{ user.username }}{% endblock page-title %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
 
-{% block nav-links %}
-    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">خانه</a></li>
-    {#                    <li><a href="{% url 'users' %}" class="nav-link px-2 text-secondary navhover">کتاب دوستان</a></li>#}
-    <li><a href="#about" class="nav-link px-2 text-secondary ">درباره ما</a></li>
-    <li><a href="#contact" class="nav-link px-2 text-secondary ">ارتباط با ما</a></li>
-    <li><a href="{% url 'blog_list' %}" class="nav-link px-2 text-secondary ">بلاگ</a></li>
-    <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown"
-           aria-expanded="false">
-            کتاب ها
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="{% url 'added_books' %}" class="nav-link px-2 text-secondary ">کتاب های اضافه شده</a></li>
-            <li><a href="{% url 'needed_books' %}" class="nav-link px-2 text-secondary ">کتاب های درخواستی</a></li>
-        </ul>
-    </li>
-{% endblock nav-links %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page-title %}{% endblock page-title %}</title>
+    <!---- bootstrap-  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
 
+    <!-- rtl -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+          integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <!---- endbootstrap-  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+<!-- header -->
+
+<div class="p-4 p-md-5  rounded" style="background-color: rgb(231, 231, 231);">
+    <div class="col-md-6 px-0">
+        <h1 class="display-4 ">کتاب یار - پنل کاربری</h1>
+        <p class="lead my-3">کتاب های مورد نیاز یا ایجاد شده و مقالات نوشته شده خود را مشاهده کنید.</p>
+        <p class="lead mb-0 text-primary fw-bold">با تکمیل مشخصات کاربران دیگر میتوانند برای مبادله کتاب ها با شما ارتباط بگیرند</p>
+    </div>
+</div>
+<header class="p-3 mb-3 border-bottom sticky-top" style="background-color: rgb(231, 231, 231);">
+
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
+                {% block nav-links %}
+                {% endblock nav-links %}
+            </ul>
+            {% if user.is_authenticated %}
+                <h5 class="navbar-brand">{{ user.username }}</h5>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-success mx-2">ورود</a>
+                <a href="{% url 'signup' %}" class="btn btn-warning mx-2">ثبت نام</a>
+            {% endif %}
+            <!-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="نام کتاب یا اضافه کننده ..." aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">جستجو</button>
+              </form> -->
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    {% if user.is_authenticated and user.profile %}
+                        <img src="{{ user.profile.url }}" alt="mdo" width="40" height="40"
+                             class="rounded-circle">
+
+                    {% else %}
+                        <img src="{% static 'img/user.png' %}" alt="mdo" width="40" height="40"
+                             class="rounded-circle">
+                    {% endif %}
+                </a>
+                {% if user.is_authenticated %}
+
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="{% url 'panel' user.id %}">پنل کاربری</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'book_create' %}">ایجاد کتاب جدید</a></li>
+                        <li><a href="{% url 'logout' %}" class="dropdown-item">خروج</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
 {% block page-content %}
 
     <div class="container">
@@ -47,30 +118,6 @@
                     </ul>
                     <hr>
                     <a href="{% url 'logout' %}" class="btn btn-danger">خروج</a>
-                    {#                    <div class="dropdown">#}
-                    {#                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"#}
-                    {#                           data-bs-toggle="dropdown" aria-expanded="false">#}
-                    {#                            {% if user.profile %}#}
-                    {#                                <img src="{{ user.profile.url }}"  width="32" height="32"#}
-                    {#                                     class="rounded-circle me-2">#}
-                    {#                            {% else %}#}
-                    {#                                <img src="{% static 'img/user.png' %}"  width="32" height="32"#}
-                    {#                                     class="rounded-circle me-2">#}
-                    {#                            {% endif %}#}
-                    {##}
-                    {#                            <strong>{{ user.username }}</strong>#}
-                    {#                        </a>#}
-                    {#                        <ul class="dropdown-menu text-small">#}
-                    {##}
-                    {#                            <li><a href="{% url 'blog_create' %}" class="dropdown-item" href="#">نوشتن مقاله در بلاگ</a>#}
-                    {#                            </li>#}
-                    {#                            <li><a class="dropdown-item" href="{% url 'book_create' %}">ایجاد کتاب جدید</a></li>#}
-                    {#                            <li>#}
-                    {#                                <hr class="dropdown-divider">#}
-                    {#                            </li>#}
-                    {#                            <li><a href="{% url 'logout' %}" class="dropdown-item">خروج</a></li>#}
-                    {#                        </ul>#}
-                    {#                    </div>#}
 
                 </div>
             </div>

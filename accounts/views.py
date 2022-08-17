@@ -3,8 +3,10 @@ from django.views import generic
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 
 from .forms import CustomUserCreateForm, CustomUserUpdateForm
+from books.models import Book
 
 
 class SignUpView(generic.CreateView):
@@ -25,3 +27,33 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
             return True
         else:
             return user.id == self.kwargs['pk']
+
+
+@login_required
+def user_needed_books_view(request, pk):
+    user = request.user
+    user_needed_books = user.books.all().filter(need_or_add='need')
+    return render(request, 'accounts/user_panel_neededbooks.html', {
+        'user': user,
+        'books': user_needed_books,
+    })
+
+
+@login_required
+def user_added_books_view(request, pk):
+    user = request.user
+    user_added_books = user.books.all().filter(need_or_add='add')
+    return render(request, 'accounts/user_panel_addedbooks.html', {
+        'user': user,
+        'books': user_added_books,
+    })
+
+
+@login_required
+def user_posts_view(request, pk):
+    user = request.user
+    user_posts = user.posts.all()
+    return render(request, 'accounts/user_panel_posts.html', {
+        'user': user,
+        'posts': user_posts,
+    })

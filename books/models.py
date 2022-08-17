@@ -50,7 +50,7 @@ class Book(models.Model):
     year = models.IntegerField()
     date_created = models.DateField(auto_now_add=True)
     time_created = models.TimeField(auto_now_add=True)
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), related_name='books', on_delete=models.CASCADE)
     is_active = models.BooleanField()
     book_cover = models.ImageField(upload_to='book_covers/', blank=True)
 

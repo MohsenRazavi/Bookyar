@@ -71,7 +71,7 @@
                 {% if user.is_authenticated %}
 
                     <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">پنل کاربری</a></li>
+                        <li><a class="dropdown-item" href="{% url 'panel' user.id %}">پنل کاربری</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

@@ -24,31 +24,28 @@
 
 
 {% block panel-content %}
-    <div class="card">
-        <div class="card-header">
-            مشخصات کاربر
+    {% for book in books %}
+        <div class="card shadow-sm">
+            <h5 class="card-header">{{ book.user.username }} | {{ book.grade }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ book.lesson }}</h5>
+                <h6 class="card-title text-muted">ایجاد شده در تاریخ : {{ book.date_created }}</h6>
+                <p class="card-text">{{ book.description|truncatewords:25 }}</p>
+                <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-left">مشاهده جزئیات</a>
+            </div>
         </div>
-        <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <a href="{% url 'password_change' %}" class="btn btn-danger mt-3">تغییر کلمه عبور</a>
-                <br>
-                <button type="submit" class="btn btn-primary mt-3">اعمال تغییرات</button>
-            </form>
-        </div>
-    </div>
+    {% endfor %}
 {% endblock panel-content %}
 
 {% block panel-nav %}
 
     <li class="nav-item">
-        <a href="{% url 'panel' user.id %}" class="nav-link active" aria-current="page">
+        <a href="{% url 'panel' user.id %}" class="nav-link link-dark" aria-current="page">
             مشخصات
         </a>
     </li>
     <li>
-        <a href="{% url 'panel_added_books' user.id %}" class="nav-link link-dark">
+        <a href="{% url 'panel_added_books' user.id %}" class="nav-link active">
             کتاب های اضافه شده
         </a>
     </li>
