@@ -62,7 +62,6 @@ def user_posts_view(request, pk):
 @login_required
 def user_out_view(request, pk):
     custom_user = get_user_model().objects.get(pk=pk)
-    print(custom_user)
     return render(request, 'accounts/user_out_view.html', {
         'custom_user': custom_user,
     })
