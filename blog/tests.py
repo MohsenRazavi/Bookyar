@@ -6,7 +6,7 @@ from .models import Post
 from .models import Comment
 
 
-class BlogUrlsTest(TestCase):
+class BlogTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = get_user_model().objects.create_user(
@@ -27,6 +27,19 @@ class BlogUrlsTest(TestCase):
             lesson='persian',
             grade='other',
             is_active=False,
+        )
+        cls.comment_active = Comment.objects.create(
+            user=cls.user,
+            post=cls.new_post_active,
+            text='test comment active',
+            is_active=True
+        )
+
+        cls.comment = Comment.objects.create(
+            user=cls.user,
+            post=cls.new_post_active,
+            text='test comment',
+            is_active=False
         )
 
     def test_urls_and_names(self):
@@ -68,3 +81,24 @@ class BlogUrlsTest(TestCase):
         response = self.client.get(reverse('blog_detail', args=[self.new_post_active.id]))
         self.assertContains(response, self.new_post_active.title)
 
+    def test_active_comment_shown(self):
+        response = self.client.get(reverse('blog_detail', args=[self.new_post_active.id]))
+        self.assertContains(response, self.comment_active.text)
+
+    def test_not_active_comment_not_shown(self):
+        response = self.client.get(reverse('blog_detail', args=[self.new_post_active.id]))
+        self.assertNotContains(response, self.comment.text)
+
+    def test_comment_create(self):
+        response = self.client.post(reverse('blog_detail', args=[self.new_post_active.id]), {
+            'user': self.user,
+            'text': 'comment2',
+            'recommend': True,
+        })
+        self.assertEqual(response.status_code, 302)
+
+    def test_comment_delete(self):
+        response = self.client.get(reverse('comment_delete', args=[self.comment_active.id]))
+        self.assertEqual(response.status_code, 302)
+
+#  some errors in not_active_comment_not_shown and comment create
