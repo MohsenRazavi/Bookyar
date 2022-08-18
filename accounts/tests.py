@@ -40,19 +40,19 @@ class AccountUrlTest(TestCase):
         self.assertEqual(response1, response2)
 
         response3 = self.client.get(reverse('panel_needed_books', args=[self.user.id]))
-        response4 = self.client.get('accounts/panel_needed_books', self.user.id)
+        response4 = self.client.get('accounts/panel_needed_books', args=[self.user.id])
         self.assertEqual(response3, response4)
 
         response5 = self.client.get(reverse('panel_added_books', args=[self.user.id]))
-        response6 = self.client.get('accounts/panel_added_books', self.user.id)
+        response6 = self.client.get('accounts/panel_added_books', args=[self.user.id])
         self.assertEqual(response5, response6)
 
         response7 = self.client.get(reverse('panel_posts', args=[self.user.id]))
-        response8 = self.client.get('accounts/panel_posts', self.user.id)
+        response8 = self.client.get('accounts/panel_posts', args=[self.user.id])
         self.assertEqual(response7, response8)
 
         response9 = self.client.get(reverse('out_view', args=[self.user.id]))
-        response10 = self.client.get('accounts/out_view', self.user.id)
+        response10 = self.client.get('accounts/out_view', args=[self.user.id])
         self.assertEqual(response9, response10)
 
     def test_account_panel_info(self):
