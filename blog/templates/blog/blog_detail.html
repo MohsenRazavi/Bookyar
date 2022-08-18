@@ -95,7 +95,7 @@
                                         </div>
                                     {% endif %}
                                     <p>{{ comment.text }}</p>
-                                    {% if comment.user == user %}
+                                    {% if comment.user == user or user.is_superuser%}
                                         <a class="btn btn-danger mb-3" href="{% url 'comment_delete' comment.id %}">حذف
                                             نظر</a>
 

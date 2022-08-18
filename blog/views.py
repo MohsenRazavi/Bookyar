@@ -83,7 +83,7 @@ class BlogPostUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
     model = Post
     form_class = PostUpdateForm
     template_name = 'blog/blog_update_post.html'
-    # self.get_object().is_active = False
+
 
     def test_func(self):
         obj = self.get_object()

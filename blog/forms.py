@@ -37,6 +37,3 @@ class PostUpdateForm(forms.ModelForm):
             'post_cover',
             'description',
         )
-
-
-
