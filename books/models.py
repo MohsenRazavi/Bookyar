@@ -40,7 +40,7 @@ class Book(models.Model):
     )
 
     title = models.CharField(max_length=200, blank=False)
-    book_official_link = models.CharField(max_length=350, blank=False)
+    book_official_link = models.TextField(blank=False)
     publisher = models.CharField(max_length=100, blank=False)
     description = models.TextField(blank=True)
     major = models.CharField(max_length=10, choices=MAJOR_CHOICES, blank=False)
