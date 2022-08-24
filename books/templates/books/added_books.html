@@ -42,9 +42,9 @@
             <div class="col-9">
                 {% for book in books %}
                     <div class="card shadow-sm">
-                        <h5 class="card-header">{{ book.user.username }} | {{ book.grade }}</h5>
+                        <h5 class="card-header">{{ book.user.username }} | {{ book.get_grade_display }}</h5>
                         <div class="card-body">
-                            <h5 class="card-title">{{ book.lesson }}</h5>
+                            <h5 class="card-title">{{ book.get_lesson_display }}</h5>
                             <h6 class="card-title text-muted">ایجاد شده در تاریخ : {{ book.date_created }}</h6>
                             <p class="card-text">{{ book.description|truncatewords:25 }}</p>
                             <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-left">مشاهده جزئیات</a>

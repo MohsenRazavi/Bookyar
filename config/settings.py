@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'rosetta',
+    'modeltranslation',
 
     'pages',
     'accounts',
@@ -114,11 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fa-ir'
+gettext = lambda s : s
 LANGUAGES = (
-    ('en', 'English'),
-    ('fa', 'Persian'),
+    ('en', gettext('English')),
+    ('fa', gettext('Persian')),
 )
-
+MODELTRANSLATION_LANGUAGES = ('en', 'fa', )
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tehran'
 

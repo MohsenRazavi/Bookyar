@@ -14,7 +14,7 @@ class NeededBooksListView(generic.ListView):
     context_object_name = 'books'
 
     def get_queryset(self):
-        return Book.objects.all().filter(need_or_add=Book.NEED_OR_ADD_CHOICES[0][0], is_active=True).order_by(
+        return Book.objects.filter(need_or_add=Book.NEED_OR_ADD_CHOICES[0][0], is_active=True).order_by(
             '-date_created')
 
 
