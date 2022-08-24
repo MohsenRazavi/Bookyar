@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-24 13:43+0430\n"
+"PO-Revision-Date: 2022-08-24 13:44+0430\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\models.py:9
+msgid "male"
+msgstr "آقا"
+
+#: .\models.py:10
+msgid "femail"
+msgstr "خانم"
+
+#: .\models.py:12
+msgid "age"
+msgstr "سن"
+
+#: .\models.py:13
+msgid "profile"
+msgstr "عکس پروفایل"
+
+#: .\models.py:14
+msgid "gender"
+msgstr "جنسیت"
+
+#: .\models.py:15
+msgid "biography"
+msgstr "درباره خود"
+
+#: .\models.py:16
+msgid "phone"
+msgstr "شماره تلفن"
+
+#: .\models.py:17
+msgid "address"
+msgstr "آدرس"

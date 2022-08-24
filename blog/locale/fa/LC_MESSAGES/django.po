@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-24 13:29+0430\n"
+"PO-Revision-Date: 2022-08-24 14:00+0430\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\forms.py:11 .\models.py:54
+msgid "text"
+msgstr "متن نظر"
+
+#: .\forms.py:12 .\models.py:57
+msgid "recommend"
+msgstr "پیشنهاد کردن"
+
+#: .\forms.py:20 .\forms.py:34
+msgid "title"
+msgstr "عنوان"
+
+#: .\forms.py:21 .\forms.py:35 .\models.py:34
+msgid "publisher"
+msgstr "انتشارات"
+
+#: .\forms.py:22 .\forms.py:36 .\models.py:36
+msgid "lesson"
+msgstr "درس"
+
+#: .\forms.py:23 .\forms.py:37 .\models.py:37
+msgid "grade"
+msgstr "پایه"
+
+#: .\forms.py:24 .\forms.py:38 .\models.py:41
+msgid "post_cover"
+msgstr "کاور مقاله"
+
+#: .\forms.py:25
+msgid "link"
+msgstr "لینک کتاب در صفحه رسمی "
+
+#: .\forms.py:26 .\forms.py:39 .\models.py:35
+msgid "description"
+msgstr "متن مقاله"
+
+#: .\models.py:9
+msgid "tenth"
+msgstr "دهم"
+
+#: .\models.py:10
+msgid "eleventh"
+msgstr "یازدهم"
+
+#: .\models.py:11
+msgid "twelfth"
+msgstr "دوازدهم"
+
+#: .\models.py:12
+msgid "all grades"
+msgstr "جامع همه پایه ها"
+
+#: .\models.py:13 .\models.py:29
+msgid "other"
+msgstr "دیگر"
+
+#: .\models.py:18
+msgid "calculus"
+msgstr "حسابان"
+
+#: .\models.py:19
+msgid "physics"
+msgstr "فیزیک"
+
+#: .\models.py:20
+msgid "chemistry"
+msgstr "شیمی"
+
+#: .\models.py:21
+msgid "geometry"
+msgstr "هندسه"
+
+#: .\models.py:22
+msgid "statistics and probability"
+msgstr "آمار و احتمال"
+
+#: .\models.py:23
+msgid "discrete math"
+msgstr "ریاضیات گسسته"
+
+#: .\models.py:24
+msgid "biology"
+msgstr "زیست"
+
+#: .\models.py:25
+msgid "persian"
+msgstr "فارسی"
+
+#: .\models.py:26
+msgid "arabic"
+msgstr "عربی"
+
+#: .\models.py:27
+msgid "english"
+msgstr "انگلیسی"
+
+#: .\models.py:28
+msgid "religion and life"
+msgstr "دین و زندگی"
+
+#: .\models.py:33
+msgid "author"
+msgstr "نویسنده کتاب"
+
+#: .\models.py:42
+msgid "official_link"
+msgstr "لینک کتاب در صفحه رسمی"

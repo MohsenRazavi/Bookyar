@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-24 14:00+0430\n"
+"PO-Revision-Date: 2022-08-24 14:03+0430\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\models.py:9
+msgid "needed"
+msgstr "درخواست دادن"
+
+#: .\models.py:10
+msgid "added"
+msgstr "اضافه کردن"
+
+#: .\models.py:13
+msgid "riazi"
+msgstr "ریاضی فیزیک"
+
+#: .\models.py:14
+msgid "tajrobi"
+msgstr "علوم تجربی"
+
+#: .\models.py:15
+msgid "ensani"
+msgstr "انسانی"
+
+#: .\models.py:16
+msgid "general"
+msgstr "عمومی"
+
+#: .\models.py:17 .\models.py:25 .\models.py:40
+msgid "other"
+msgstr "دیگر"
+
+#: .\models.py:21
+msgid "tenth"
+msgstr "دهم"
+
+#: .\models.py:22
+msgid "eleventh"
+msgstr "یازدهم"
+
+#: .\models.py:23
+msgid "twelfth"
+msgstr "دوازدهم"
+
+#: .\models.py:24
+msgid "all grades"
+msgstr "جامع همه پایه ها"
+
+#: .\models.py:29
+msgid "calculus"
+msgstr "حسابان"
+
+#: .\models.py:30
+msgid "physics"
+msgstr "فیزیک"
+
+#: .\models.py:31
+msgid "chemistry"
+msgstr "شیمی"
+
+#: .\models.py:32
+msgid "geometry"
+msgstr "هندسه"
+
+#: .\models.py:33
+msgid "statistics and probability"
+msgstr "آمار و احتمال"
+
+#: .\models.py:34
+msgid "discrete math"
+msgstr "ریاضیات گسسته"
+
+#: .\models.py:35
+msgid "biology"
+msgstr "زیست"
+
+#: .\models.py:36
+msgid "persian"
+msgstr "فارسی"
+
+#: .\models.py:37
+msgid "arabic"
+msgstr "عربی"
+
+#: .\models.py:38
+msgid "english"
+msgstr "انگلیسی"
+
+#: .\models.py:39
+msgid "religion and life"
+msgstr "دین و زندگی"
+
+#: .\models.py:43
+msgid "title"
+msgstr "عنوان"
+
+#: .\models.py:44
+msgid "book official link"
+msgstr "لینک کتاب در صفحه رسمی"
+
+#: .\models.py:45
+msgid "publisher"
+msgstr "انتشارات"
+
+#: .\models.py:46
+msgid "description"
+msgstr "توضیحات"
+
+#: .\models.py:47
+msgid "major"
+msgstr "رشته"
+
+#: .\models.py:48
+msgid "grade"
+msgstr "پایه"
+
+#: .\models.py:49
+msgid "lesson"
+msgstr "درس"
+
+#: .\models.py:50
+msgid "need or add"
+msgstr "نوع "
+
+#: .\models.py:51
+msgid "publish year"
+msgstr "سال چاپ"
+
+#: .\models.py:56
+msgid "book cover"
+msgstr "تصویر جلد"
